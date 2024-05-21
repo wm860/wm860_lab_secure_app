@@ -30,4 +30,4 @@ jobs:
           -e MIXEWAY_PROJECT_NAME=wm860_lab_secure_app \
           -e COMMIT_ID=test \
           -e BRANCH=master \
-          -v /opt/lab_sec_audit/sast:/opt/sources mixeway/scanner:latest
+          -v "${{ github.workspace }}":/opt/sources mixeway/scanner:latest
