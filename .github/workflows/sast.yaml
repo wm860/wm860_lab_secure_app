@@ -9,12 +9,12 @@ jobs:
                           id: vars
                           shell: bash
                           run: |
-                                  echo "##[set-output name=branch;]$(echo
-                                  ${GITHUB_REF#refs/heads/})"
-                          echo "::set-output name=sha_short::$(git rev-parse HEAD)"
+                                echo "##[set-output name=branch;]$(echo
+                                ${GITHUB_REF#refs/heads/})"
+                                echo "::set-output name=sha_short::$(git rev-parse HEAD)"
                         - name: Prepare Mixeway docker image
                           run: |
-                                  docker pull mixeway/scanner:latest
+                                docker pull mixeway/scanner:latest
                         - name: Run test
                           run: |
-                                  docker run -e OSS_USERNAME=wojtekmakos860@gmail.com -e OSS_KEY=fe3304ab63759408cb137b7fea809044bb4012ea -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=ad4e21b5-b053-42cc-be4e-7f4d10d85cdb -e MIXEWAY_PROJECT_ID=146 MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=wm860_lab_secure_app -e COMMIT_ID=test -e BRANCH=master -v /opt/lab_sec_audit/sast:/opt/sources mixeway/scanner:latest
+                                docker run -e OSS_USERNAME=wojtekmakos860@gmail.com -e OSS_KEY=fe3304ab63759408cb137b7fea809044bb4012ea -e MIXEWAY_URL=https://hub.mixeway.io -e MIXEWAY_KEY=ad4e21b5-b053-42cc-be4e-7f4d10d85cdb -e MIXEWAY_PROJECT_ID=146 MODE=STANDALONE -e MIXEWAY_PROJECT_NAME=wm860_lab_secure_app -e COMMIT_ID=test -e BRANCH=master -v /opt/lab_sec_audit/sast:/opt/sources mixeway/scanner:latest
